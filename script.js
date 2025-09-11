@@ -337,3 +337,17 @@ function createScrollProgress() {
 document.addEventListener('DOMContentLoaded', () => {
     createScrollProgress();
 });
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); // prevent page reload
+
+    emailjs.sendForm('service_3h5atyi', 'template_922jqic', this)
+    .then(() => {
+        alert("Email sent successfully!");
+        form.reset();
+    }, (err) => {
+        console.error(err);
+        alert("Failed to send email. Try again later.");
+    });
+});
